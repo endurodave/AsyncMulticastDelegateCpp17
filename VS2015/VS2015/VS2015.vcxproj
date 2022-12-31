@@ -150,9 +150,6 @@
     <ClInclude Include="..\..\Delegate\DelegateAsync.h" />
     <ClInclude Include="..\..\Delegate\DelegateAsyncWait.h" />
     <ClInclude Include="..\..\Delegate\DelegateOpt.h" />
-    <ClInclude Include="..\..\Delegate\DelegateRemoteInvoker.h" />
-    <ClInclude Include="..\..\Delegate\DelegateRemoteRecv.h" />
-    <ClInclude Include="..\..\Delegate\DelegateRemoteSend.h" />
     <ClInclude Include="..\..\Delegate\DelegateSpAsync.h" />
     <ClInclude Include="..\..\Delegate\DelegateInvoker.h" />
     <ClInclude Include="..\..\Delegate\DelegateLib.h" />
@@ -182,7 +179,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Delegate\Allocator.cpp" />
-    <ClCompile Include="..\..\Delegate\DelegateRemoteInvoker.cpp" />
     <ClCompile Include="..\..\Delegate\DelegateUnitTests.cpp" />
     <ClCompile Include="..\..\Delegate\LockGuard.cpp" />
     <ClCompile Include="..\..\Delegate\Semaphore.cpp" />

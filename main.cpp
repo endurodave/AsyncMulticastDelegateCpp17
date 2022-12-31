@@ -237,35 +237,6 @@ private:
 	}
 };
 
-#if 0 // TODO
-class RemoteRecv
-{
-public:
-	void RemoteRecvMember(RemoteData& t)
-	{
-		cout << "RemoteRecvMember: " << t.GetX() << " " << t.GetY() << endl;
-	}
-};
-
-class DelegateSend : public DelegateLib::IDelegateTransport
- {
-  public:
-	  static DelegateSend& GetInstance()
-	  {
-		  static DelegateSend instance;
-		  return instance;
-	  }
-
-      /// Called by the delegate library to invoke a remote delegate
-      /// @param[in] s - the stream of bytes to send
-	  virtual void DispatchDelegate(std::iostream& s)
-	  {
-		  // TODO - Implement dispatching delegate here. Could be any transport, e.g. TCP, UDP, serial, etc...
-		  cout << "DelegateSend Called!" << endl;
-	  }
-};
-#endif
-
 class Coordinates
 {
 public:
@@ -559,7 +530,6 @@ int main(void)
 	auto lambdaDelegate2 = MakeDelegate(LambdaFunc2, workerThread1);
 	lambdaDelegate2(lambdaArg, true);
 
-#ifdef USE_CXX17
 	// Asynchronously invoke lambda on workerThread1 using AsyncInvoke
 	auto lambdaRet = MakeDelegate(LambdaFunc1, workerThread1, std::chrono::milliseconds(100)).AsyncInvoke(543);
 	if (lambdaRet.has_value())
@@ -588,7 +558,6 @@ int main(void)
 	const auto valAsyncResult = std::count_if(v.begin(), v.end(),
 		countLambdaDelegate);
 	cout << "Asynchronous lambda result: " << valAsyncResult << endl;
-#endif // USE_CXX17
 	// End lambda examples
 
 	// Create a SysDataClient instance on the stack
@@ -611,27 +580,6 @@ int main(void)
 	SystemMode::Type previousMode;
 	previousMode = SysDataNoLock::GetInstance().SetSystemModeAsyncWaitAPI(SystemMode::STARTING);
 	previousMode = SysDataNoLock::GetInstance().SetSystemModeAsyncWaitAPI(SystemMode::NORMAL);
-
-#if 0 // TODO
-	// Start remote delegate test code
-	// The code below just instantiates a send/recv delegates and shows sending
-	// See links below for a complete example of remote delegates:
-	// https://www.codeproject.com/Articles/5262271/Remote-Procedure-Calls-using-Cplusplus-Delegates
-	// https://github.com/endurodave/RemoteDelegate
-	// Sender Code:
-	std::stringstream ss(ios::in | ios::out | ios::binary);
-	DelegateRemoteSend<void(const RemoteData&)> sendData(DelegateSend::GetInstance(), ss, 1);
-
-	RemoteData remoteData(11, 22);
-	sendData(remoteData);
-
-	// Receiver Code:
-	RemoteRecv remoteRecv;
-	DelegateMemberRemoteRecv<void(RemoteRecv(RemoteData&))> recvData1(&remoteRecv, &RemoteRecv::RemoteRecvMember, 1);
-
-	DelegateRemoteInvoker::Invoke(ss);
-	// End remote delegate test code
-#endif
 
     timer.Stop();
     timer.Expired.Clear();

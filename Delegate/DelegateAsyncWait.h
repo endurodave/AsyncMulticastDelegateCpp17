@@ -11,9 +11,7 @@
 #include "Semaphore.h"
 #include <memory>
 #include <chrono>
-#ifdef USE_CXX17
 #include <optional>
-#endif
 
 /// @brief Asynchronous member delegate that invokes the target function on the specified thread of control
 /// and waits for the function to be executed or a timeout occurs. Use IsSuccess() to determine if asynchronous 

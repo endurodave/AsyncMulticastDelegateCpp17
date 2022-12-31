@@ -8,7 +8,7 @@
 // David Lafreniere, Oct 2022.
 
 #include "DelegateOpt.h"
-#if USE_XALLOCATOR
+#ifdef USE_XALOCATOR
 	#include "xallocator.h"
 #endif
 
@@ -16,7 +16,7 @@ namespace DelegateLib {
 
 /// @brief Non-template common base class for all delegates.
 class DelegateBase {
-#if USE_XALLOCATOR
+#ifdef USE_XALOCATOR
 	XALLOCATOR
 #endif
 public:

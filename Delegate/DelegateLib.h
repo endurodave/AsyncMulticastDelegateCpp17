@@ -8,8 +8,6 @@
 #include "SinglecastDelegate.h"
 #include "DelegateAsync.h"
 #include "DelegateAsyncWait.h"
-//#include "DelegateRemoteSend.h" TODO
-//#include "DelegateRemoteRecv.h"
 #include "DelegateSpAsync.h"
 
 #endif
