@@ -17,26 +17,15 @@
 
 namespace DelegateLib {
 
+// Get the type of the Nth position within a template parameter pack
 template<size_t N, class... Args> using ArgTypeOf =
     typename std::tuple_element<N, std::tuple<Args...>>::type;
 
+// Get the value of the Nth position within a template parameter pack
 template <size_t N, class... Args>
 decltype(auto) ArgValueOf(Args&&... ts) {
     return std::get<N>(std::forward_as_tuple(ts...));
 }
-
-// WORKS!
-//template <size_t V, typename... T>
-//decltype(auto) ArgValueOf(T&&... Args) noexcept {
-    //return std::get<V>(std::forward_as_tuple(std::forward<T>(Args)...));
-//}
-
-
-// WORKS!
-//template <size_t V, typename... T>
-//std::tuple_element_t<V, std::tuple<T...>> ArgValueOf(T&&... Args) noexcept {
-    //return std::get<V>(std::forward_as_tuple(std::forward<T>(Args)...));
-//}
 
 // std::shared_ptr reference arguments are not allowed with asynchronous delegates as the behavior is 
 // undefined. In other words:
