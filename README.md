@@ -28,7 +28,7 @@ A C++ standards compliant delegate library capable of targeting any callable fun
 	<li><strong>Any Compiler</strong> &ndash; standard C++17 code for any compiler without weird hacks</li>
 	<li><strong>Any Function</strong> &ndash; invoke any callable function: member, static, or free</li>
 	<li><strong>Any Argument Type</strong> &ndash; supports any argument type: value, reference, pointer, pointer to pointer</li>
-	<li><strong>Multiple Arguments</strong> &ndash; supports N number of function arguments for the bound function</li>
+	<li><strong>Multiple Arguments</strong> &ndash; supports 5 number of function arguments for the bound function</li>
 	<li><strong>Synchronous Invocation</strong> &ndash; call the bound function synchronously</li>
 	<li><strong>Asynchronous Invocation</strong> &ndash; call the bound function asynchronously on a client specified thread</li>
 	<li><strong>Blocking Asynchronous Invocation</strong> - invoke asynchronously using blocking or non-blocking delegates</li>
