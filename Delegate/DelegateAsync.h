@@ -11,7 +11,7 @@
 #include <memory>
 #include <type_traits>
 #include <tuple>
-#ifdef USE_XALOCATOR
+#ifdef USE_XALLOCATOR
 	#include <new>
 #endif
 
@@ -66,7 +66,7 @@ class DelegateParam<Param *>
 {
 public:
 	static Param* New(Param* param)	{
-#ifdef USE_XALOCATOR
+#ifdef USE_XALLOCATOR
 		void* mem = xmalloc(sizeof(*param));
 		Param* newParam = new (mem) Param(*param);
 #else
@@ -76,7 +76,7 @@ public:
 	}
 
 	static void Delete(Param* param) {
-#ifdef USE_XALOCATOR
+#ifdef USE_XALLOCATOR
 		param->~Param();
 		xfree((void*)param);
 #else
@@ -91,7 +91,7 @@ class DelegateParam<Param **>
 {
 public:
 	static Param** New(Param** param) {
-#ifdef USE_XALOCATOR
+#ifdef USE_XALLOCATOR
 		void* mem = xmalloc(sizeof(*param));
 		Param** newParam = new (mem) Param*();
 
@@ -105,7 +105,7 @@ public:
 	}
 
 	static void Delete(Param** param) {
-#ifdef USE_XALOCATOR
+#ifdef USE_XALLOCATOR
 		(*param)->~Param();
 		xfree((void*)(*param));
 
@@ -123,7 +123,7 @@ class DelegateParam<Param &>
 {
 public:
 	static Param& New(Param& param)	{
-#ifdef USE_XALOCATOR
+#ifdef USE_XALLOCATOR
 		void* mem = xmalloc(sizeof(param));
 		Param* newParam = new (mem) Param(param);
 #else
@@ -133,7 +133,7 @@ public:
 	}
 
 	static void Delete(Param& param) {
-#ifdef USE_XALOCATOR
+#ifdef USE_XALLOCATOR
 		(&param)->~Param();
 		xfree((void*)(&param));
 #else

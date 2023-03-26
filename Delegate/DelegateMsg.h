@@ -4,7 +4,7 @@
 #include "Fault.h"
 #include "DelegateInvoker.h"
 #include <memory>
-#ifdef USE_XALOCATOR
+#ifdef USE_XALLOCATOR
 	#include "xallocator.h"
 #endif
 
@@ -14,7 +14,7 @@ class DelegateBase;
 
 class DelegateMsgBase
 {
-#ifdef USE_XALOCATOR
+#ifdef USE_XALLOCATOR
 	XALLOCATOR
 #endif
 public:
