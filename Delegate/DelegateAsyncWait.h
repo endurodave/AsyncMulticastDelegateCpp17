@@ -147,8 +147,7 @@ public:
 
                 using Param1 = ArgTypeOf<0, Args...>;
 
-                decltype(auto) heap_p1 = DelegateParam<Param1>::New(p1);
-                auto msg = std::make_shared<DelegateMsg1<Param1>>(delegate, heap_p1);
+                auto msg = std::make_shared<DelegateMsg1<Param1>>(delegate, p1);
 
                 m_thread.DispatchDelegate(msg);
             }
@@ -160,9 +159,7 @@ public:
                 using Param1 = ArgTypeOf<0, Args...>;
                 using Param2 = ArgTypeOf<1, Args...>;
 
-                decltype(auto) heap_p1 = DelegateParam<Param1>::New(p1);
-                decltype(auto) heap_p2 = DelegateParam<Param2>::New(p2);
-                auto msg = std::make_shared<DelegateMsg2<Param1, Param2>>(delegate, heap_p1, heap_p2);
+                auto msg = std::make_shared<DelegateMsg2<Param1, Param2>>(delegate, p1, p2);
 
                 m_thread.DispatchDelegate(msg);
             }
@@ -176,10 +173,7 @@ public:
                 using Param2 = ArgTypeOf<1, Args...>;
                 using Param3 = ArgTypeOf<2, Args...>;
 
-                decltype(auto) heap_p1 = DelegateParam<Param1>::New(p1);
-                decltype(auto) heap_p2 = DelegateParam<Param2>::New(p2);
-                decltype(auto) heap_p3 = DelegateParam<Param3>::New(p3);
-                auto msg = std::make_shared<DelegateMsg3<Param1, Param2, Param3>>(delegate, heap_p1, heap_p2, heap_p3);
+                auto msg = std::make_shared<DelegateMsg3<Param1, Param2, Param3>>(delegate, p1, p2, p3);
 
                 m_thread.DispatchDelegate(msg);
             }
@@ -195,11 +189,7 @@ public:
                 using Param3 = ArgTypeOf<2, Args...>;
                 using Param4 = ArgTypeOf<3, Args...>;
 
-                decltype(auto) heap_p1 = DelegateParam<Param1>::New(p1);
-                decltype(auto) heap_p2 = DelegateParam<Param2>::New(p2);
-                decltype(auto) heap_p3 = DelegateParam<Param3>::New(p3);
-                decltype(auto) heap_p4 = DelegateParam<Param4>::New(p4);
-                auto msg = std::make_shared<DelegateMsg4<Param1, Param2, Param3, Param4>>(delegate, heap_p1, heap_p2, heap_p3, heap_p4);
+                auto msg = std::make_shared<DelegateMsg4<Param1, Param2, Param3, Param4>>(delegate, p1, p2, p3, p4);
 
                 m_thread.DispatchDelegate(msg);
             }
@@ -217,12 +207,7 @@ public:
                 using Param4 = ArgTypeOf<3, Args...>;
                 using Param5 = ArgTypeOf<4, Args...>;
 
-                decltype(auto) heap_p1 = DelegateParam<Param1>::New(p1);
-                decltype(auto) heap_p2 = DelegateParam<Param2>::New(p2);
-                decltype(auto) heap_p3 = DelegateParam<Param3>::New(p3);
-                decltype(auto) heap_p4 = DelegateParam<Param4>::New(p4);
-                decltype(auto) heap_p5 = DelegateParam<Param5>::New(p5);
-                auto msg = std::make_shared<DelegateMsg5<Param1, Param2, Param3, Param4, Param5>>(delegate, heap_p1, heap_p2, heap_p3, heap_p4, heap_p5);
+                auto msg = std::make_shared<DelegateMsg5<Param1, Param2, Param3, Param4, Param5>>(delegate, p1, p2, p3, p4, p5);
 
                 m_thread.DispatchDelegate(msg);
             }
@@ -414,8 +399,7 @@ public:
 
                 using Param1 = ArgTypeOf<0, Args...>;
 
-                decltype(auto) heap_p1 = DelegateParam<Param1>::New(p1);
-                auto msg = std::make_shared<DelegateMsg1<Param1>>(delegate, heap_p1);
+                auto msg = std::make_shared<DelegateMsg1<Param1>>(delegate, p1);
 
                 m_thread.DispatchDelegate(msg);
             }
@@ -427,9 +411,7 @@ public:
                 using Param1 = ArgTypeOf<0, Args...>;
                 using Param2 = ArgTypeOf<1, Args...>;
 
-                decltype(auto) heap_p1 = DelegateParam<Param1>::New(p1);
-                decltype(auto) heap_p2 = DelegateParam<Param2>::New(p2);
-                auto msg = std::make_shared<DelegateMsg2<Param1, Param2>>(delegate, heap_p1, heap_p2);
+                auto msg = std::make_shared<DelegateMsg2<Param1, Param2>>(delegate, p1, p2);
 
                 m_thread.DispatchDelegate(msg);
             }
@@ -443,10 +425,7 @@ public:
                 using Param2 = ArgTypeOf<1, Args...>;
                 using Param3 = ArgTypeOf<2, Args...>;
 
-                decltype(auto) heap_p1 = DelegateParam<Param1>::New(p1);
-                decltype(auto) heap_p2 = DelegateParam<Param2>::New(p2);
-                decltype(auto) heap_p3 = DelegateParam<Param3>::New(p3);
-                auto msg = std::make_shared<DelegateMsg3<Param1, Param2, Param3>>(delegate, heap_p1, heap_p2, heap_p3);
+                auto msg = std::make_shared<DelegateMsg3<Param1, Param2, Param3>>(delegate, p1, p2, p3);
 
                 m_thread.DispatchDelegate(msg);
             }
@@ -462,11 +441,7 @@ public:
                 using Param3 = ArgTypeOf<2, Args...>;
                 using Param4 = ArgTypeOf<3, Args...>;
 
-                decltype(auto) heap_p1 = DelegateParam<Param1>::New(p1);
-                decltype(auto) heap_p2 = DelegateParam<Param2>::New(p2);
-                decltype(auto) heap_p3 = DelegateParam<Param3>::New(p3);
-                decltype(auto) heap_p4 = DelegateParam<Param4>::New(p4);
-                auto msg = std::make_shared<DelegateMsg4<Param1, Param2, Param3, Param4>>(delegate, heap_p1, heap_p2, heap_p3, heap_p4);
+                auto msg = std::make_shared<DelegateMsg4<Param1, Param2, Param3, Param4>>(delegate, p1, p2, p3, p4);
 
                 m_thread.DispatchDelegate(msg);
             }
@@ -484,12 +459,7 @@ public:
                 using Param4 = ArgTypeOf<3, Args...>;
                 using Param5 = ArgTypeOf<4, Args...>;
 
-                decltype(auto) heap_p1 = DelegateParam<Param1>::New(p1);
-                decltype(auto) heap_p2 = DelegateParam<Param2>::New(p2);
-                decltype(auto) heap_p3 = DelegateParam<Param3>::New(p3);
-                decltype(auto) heap_p4 = DelegateParam<Param4>::New(p4);
-                decltype(auto) heap_p5 = DelegateParam<Param5>::New(p5);
-                auto msg = std::make_shared<DelegateMsg5<Param1, Param2, Param3, Param4, Param5>>(delegate, heap_p1, heap_p2, heap_p3, heap_p4, heap_p5);
+                auto msg = std::make_shared<DelegateMsg5<Param1, Param2, Param3, Param4, Param5>>(delegate, p1, p2, p3, p4, p5);
 
                 m_thread.DispatchDelegate(msg);
             }

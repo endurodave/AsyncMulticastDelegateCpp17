@@ -180,6 +180,184 @@ private:
 	Param5 m_param5;
 };
 
+/// @brief A class containing the delegate information passed through 
+/// the message queue. 
+template <typename Param1>
+class DelegateMsgHeapParam1 : public DelegateMsgBase
+{
+public:
+	/// Constructor
+	/// @param[in] invoker - the invoker instance the delegate is registered with.
+	/// @param[in] param1 - the data sent as delegate function argument.
+	DelegateMsgHeapParam1(std::shared_ptr<IDelegateInvoker> invoker, Param1 param1) :
+		DelegateMsgBase(invoker),
+		m_param1(DelegateParam<Param1>::New(param1))
+	{
+	}
+
+	~DelegateMsgHeapParam1()
+	{
+		DelegateParam<Param1>::Delete(m_param1);
+	}
+
+	/// Get the delegate data passed into the delegate function. 
+	/// @return The param1 delegate function data. 
+	Param1 GetParam1() const { return m_param1; }
+
+private:
+	/// The data argument passed into the callback function
+	Param1 m_param1;
+};
+
+template <typename Param1, typename Param2>
+class DelegateMsgHeapParam2 : public DelegateMsgBase
+{
+public:
+	/// Constructor
+	/// @param[in] invoker - the invoker instance the delegate is registered with.
+	/// @param[in] param1 - the data sent as delegate function argument.
+	DelegateMsgHeapParam2(std::shared_ptr<IDelegateInvoker> invoker, Param1 param1, Param2 param2) :
+		DelegateMsgBase(invoker),
+		m_param1(DelegateParam<Param1>::New(param1)),
+		m_param2(DelegateParam<Param2>::New(param2))
+	{
+	}
+
+	~DelegateMsgHeapParam2()
+	{
+		DelegateParam<Param1>::Delete(m_param1);
+		DelegateParam<Param2>::Delete(m_param2);
+	}
+
+	/// Get the delegate data passed into the delegate function. 
+	/// @return The param1 delegate function data. 
+	Param1 GetParam1() const { return m_param1; }
+	Param2 GetParam2() const { return m_param2; }
+
+private:
+	/// The data argument passed into the invoked function
+	Param1 m_param1;
+	Param2 m_param2;
+};
+
+template <typename Param1, typename Param2, typename Param3>
+class DelegateMsgHeapParam3 : public DelegateMsgBase
+{
+public:
+	/// Constructor
+	/// @param[in] invoker - the invoker instance the delegate is registered with.
+	/// @param[in] param1 - the data sent as delegate function argument.
+	DelegateMsgHeapParam3(std::shared_ptr<IDelegateInvoker> invoker, Param1 param1, Param2 param2, Param3 param3) :
+		DelegateMsgBase(invoker),
+		m_param1(DelegateParam<Param1>::New(param1)),
+		m_param2(DelegateParam<Param2>::New(param2)),
+		m_param3(DelegateParam<Param3>::New(param3))
+	{
+	}
+
+	~DelegateMsgHeapParam3()
+	{
+		DelegateParam<Param1>::Delete(m_param1);
+		DelegateParam<Param2>::Delete(m_param2);
+		DelegateParam<Param3>::Delete(m_param3);
+	}
+
+	/// Get the delegate data passed into the delegate function. 
+	/// @return The param1 delegate function data. 
+	Param1 GetParam1() const { return m_param1; }
+	Param2 GetParam2() const { return m_param2; }
+	Param3 GetParam3() const { return m_param3; }
+
+private:
+	/// The data argument passed into the invoked function
+	Param1 m_param1;
+	Param2 m_param2;
+	Param3 m_param3;
+};
+
+template <typename Param1, typename Param2, typename Param3, typename Param4>
+class DelegateMsgHeapParam4 : public DelegateMsgBase
+{
+public:
+	/// Constructor
+	/// @param[in] invoker - the invoker instance the delegate is registered with.
+	/// @param[in] param1 - the data sent as delegate function argument.
+	DelegateMsgHeapParam4(std::shared_ptr<IDelegateInvoker> invoker, Param1 param1, Param2 param2, Param3 param3, Param4 param4) :
+		DelegateMsgBase(invoker),
+		m_param1(DelegateParam<Param1>::New(param1)),
+		m_param2(DelegateParam<Param2>::New(param2)),
+		m_param3(DelegateParam<Param3>::New(param3)),
+		m_param4(DelegateParam<Param4>::New(param4))
+	{
+	}
+
+	~DelegateMsgHeapParam4()
+	{
+		DelegateParam<Param1>::Delete(m_param1);
+		DelegateParam<Param2>::Delete(m_param2);
+		DelegateParam<Param3>::Delete(m_param3);
+		DelegateParam<Param4>::Delete(m_param4);
+	}
+
+	/// Get the delegate data passed into the delegate function. 
+	/// @return The param1 delegate function data. 
+	Param1 GetParam1() const { return m_param1; }
+	Param2 GetParam2() const { return m_param2; }
+	Param3 GetParam3() const { return m_param3; }
+	Param4 GetParam4() const { return m_param4; }
+
+private:
+	/// The data argument passed into the invoked function
+	Param1 m_param1;
+	Param2 m_param2;
+	Param3 m_param3;
+	Param4 m_param4;
+};
+
+template <typename Param1, typename Param2, typename Param3, typename Param4, typename Param5>
+class DelegateMsgHeapParam5 : public DelegateMsgBase
+{
+public:
+	/// Constructor
+	/// @param[in] invoker - the invoker instance the delegate is registered with.
+	/// @param[in] param1 - the data sent as delegate function argument.
+	DelegateMsgHeapParam5(std::shared_ptr<IDelegateInvoker> invoker, Param1 param1, Param2 param2, Param3 param3, Param4 param4, Param5 param5) :
+		DelegateMsgBase(invoker),
+		m_param1(DelegateParam<Param1>::New(param1)),
+		m_param2(DelegateParam<Param2>::New(param2)),
+		m_param3(DelegateParam<Param3>::New(param3)),
+		m_param4(DelegateParam<Param4>::New(param4)),
+		m_param5(DelegateParam<Param5>::New(param5))
+
+	{
+	}
+
+	~DelegateMsgHeapParam5()
+	{
+		DelegateParam<Param1>::Delete(m_param1);
+		DelegateParam<Param2>::Delete(m_param2);
+		DelegateParam<Param3>::Delete(m_param3);
+		DelegateParam<Param4>::Delete(m_param4);
+		DelegateParam<Param5>::Delete(m_param5);
+	}
+
+	/// Get the delegate data passed into the delegate function. 
+	/// @return The param1 delegate function data. 
+	Param1 GetParam1() const { return m_param1; }
+	Param2 GetParam2() const { return m_param2; }
+	Param3 GetParam3() const { return m_param3; }
+	Param4 GetParam4() const { return m_param4; }
+	Param5 GetParam5() const { return m_param5; }
+
+private:
+	/// The data argument passed into the invoked function
+	Param1 m_param1;
+	Param2 m_param2;
+	Param3 m_param3;
+	Param4 m_param4;
+	Param5 m_param5;
+};
+
 }
 
 #endif
