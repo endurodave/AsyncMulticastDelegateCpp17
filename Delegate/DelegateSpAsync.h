@@ -87,6 +87,10 @@ public:
                 auto msg = std::make_shared<DelegateMsg1<Param1>>(delegate, heap_p1);
 
                 m_thread.DispatchDelegate(msg);
+
+                static_assert(!(
+                    (is_shared_ptr<Param1>::value && (std::is_lvalue_reference<Param1>::value || std::is_pointer<Param1>::value))),
+                    "std::shared_ptr reference argument not allowed");
             }
             else if constexpr (ArgCnt::value == 2)
             {
@@ -101,6 +105,11 @@ public:
                 auto msg = std::make_shared<DelegateMsg2<Param1, Param2>>(delegate, heap_p1, heap_p2);
 
                 m_thread.DispatchDelegate(msg);
+
+                static_assert(!(
+                    (is_shared_ptr<Param1>::value && (std::is_lvalue_reference<Param1>::value || std::is_pointer<Param1>::value)) ||
+                    (is_shared_ptr<Param2>::value && (std::is_lvalue_reference<Param2>::value || std::is_pointer<Param2>::value))),
+                    "std::shared_ptr reference argument not allowed");
             }
             else if constexpr (ArgCnt::value == 3)
             {
@@ -118,6 +127,12 @@ public:
                 auto msg = std::make_shared<DelegateMsg3<Param1, Param2, Param3>>(delegate, heap_p1, heap_p2, heap_p3);
 
                 m_thread.DispatchDelegate(msg);
+
+                static_assert(!(
+                    (is_shared_ptr<Param1>::value && (std::is_lvalue_reference<Param1>::value || std::is_pointer<Param1>::value)) ||
+                    (is_shared_ptr<Param2>::value && (std::is_lvalue_reference<Param2>::value || std::is_pointer<Param2>::value)) ||
+                    (is_shared_ptr<Param3>::value && (std::is_lvalue_reference<Param3>::value || std::is_pointer<Param3>::value))),
+                    "std::shared_ptr reference argument not allowed");
             }
             else if constexpr (ArgCnt::value == 4)
             {
@@ -138,6 +153,13 @@ public:
                 auto msg = std::make_shared<DelegateMsg4<Param1, Param2, Param3, Param4>>(delegate, heap_p1, heap_p2, heap_p3, heap_p4);
 
                 m_thread.DispatchDelegate(msg);
+
+                static_assert(!(
+                    (is_shared_ptr<Param1>::value && (std::is_lvalue_reference<Param1>::value || std::is_pointer<Param1>::value)) ||
+                    (is_shared_ptr<Param2>::value && (std::is_lvalue_reference<Param2>::value || std::is_pointer<Param2>::value)) ||
+                    (is_shared_ptr<Param3>::value && (std::is_lvalue_reference<Param3>::value || std::is_pointer<Param3>::value)) ||
+                    (is_shared_ptr<Param4>::value && (std::is_lvalue_reference<Param4>::value || std::is_pointer<Param4>::value))),
+                    "std::shared_ptr reference argument not allowed");
             }
             else if constexpr (ArgCnt::value == 5)
             {
@@ -161,6 +183,14 @@ public:
                 auto msg = std::make_shared<DelegateMsg5<Param1, Param2, Param3, Param4, Param5>>(delegate, heap_p1, heap_p2, heap_p3, heap_p4, heap_p5);
 
                 m_thread.DispatchDelegate(msg);
+
+                static_assert(!(
+                    (is_shared_ptr<Param1>::value && (std::is_lvalue_reference<Param1>::value || std::is_pointer<Param1>::value)) ||
+                    (is_shared_ptr<Param2>::value && (std::is_lvalue_reference<Param2>::value || std::is_pointer<Param2>::value)) ||
+                    (is_shared_ptr<Param3>::value && (std::is_lvalue_reference<Param3>::value || std::is_pointer<Param3>::value)) ||
+                    (is_shared_ptr<Param4>::value && (std::is_lvalue_reference<Param4>::value || std::is_pointer<Param4>::value)) ||
+                    (is_shared_ptr<Param5>::value && (std::is_lvalue_reference<Param5>::value || std::is_pointer<Param5>::value))),
+                    "std::shared_ptr reference argument not allowed");
             }
         }
     }
