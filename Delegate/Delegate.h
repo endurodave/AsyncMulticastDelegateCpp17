@@ -5,6 +5,8 @@
 // @see https://www.codeproject.com/Articles/1160934/Asynchronous-Multicast-Delegates-in-Cplusplus
 // David Lafreniere, Oct 2022.
 
+#include <functional>
+
 #include "DelegateOpt.h"
 #ifdef USE_XALLOCATOR
 	#include "xallocator.h"
