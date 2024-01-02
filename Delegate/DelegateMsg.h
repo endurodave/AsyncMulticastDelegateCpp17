@@ -3,6 +3,7 @@
 
 #include "Fault.h"
 #include "DelegateInvoker.h"
+#include "DelegateParam.h"
 #include <memory>
 #ifdef USE_XALLOCATOR
 	#include "xallocator.h"
