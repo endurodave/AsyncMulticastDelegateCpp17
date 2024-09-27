@@ -326,20 +326,17 @@ cout &lt;&lt; &quot;Asynchronous lambda result: &quot; &lt;&lt; valAsyncResult &
 
 <p>The delegate library contains numerous classes. A single include <em>DelegateLib.h</em> provides access to all delegate library features. The library is wrapped within a <code>DelegateLib </code>namespace. Included unit tests help ensure a robust implementation. The table below shows the delegate class hierarchy.</p>
 
-<ul class="class">
-	<li><code>DelegateBase</code></li>
-	<li><code>Delegate&lt;&gt;</code></li>
-	<li><code>DelegateFree&lt;&gt;</code></li>
-	<li><code>DelegateFreeAsync&lt;&gt;</code></li>
-	<li><code>DelegateFreeAsyncWaitBase&lt;&gt;</code></li>
-	<li><code>DelegateFreeAsyncWait&lt;&gt;</code></li>
-	<li><code>DelegateMember&lt;&gt;</code></li>
-	<li><code>DelegateMemberAsync&lt;&gt;</code></li>
-	<li><code>DelegateMemberAsyncWaitBase&lt;&gt;</code></li>
-	<li><code>DelegateMemberAsyncWait&lt;&gt;</code></li>
-	<li><code>DelegateMemberSp&lt;&gt;</code></li>
-	<li><code>DelegateMemberSpAsync&lt;&gt;</code></li>
-</ul>
+```cpp
+DelegateBase
+    Delegate<>
+        DelegateFree<>
+            DelegateFreeAsync<>
+                DelegateFreeAsyncWait<>
+        DelegateMember<>
+            DelegateMemberAsync<>
+                DelegateMemberAsyncWait<>
+        DelegateMemberSp<>
+```
 
 For this implementation the section "Delegate Library" was not updated. See the section "Delegate Library" in both the links below for design implementation details. While some information (like code snippets) are not directly related to this implementation, the ideas and cautions are still useful. 
 
@@ -400,12 +397,11 @@ void WorkerThread::Process()
 
 <p>Delegate containers store one or more delegates. The delegate container hierarchy is shown below:</p>
 
-<ul class="class">
-	<li><code>MulticastDelegateBase</code></li>
-	<li><code>MulticastDelegate&lt;&gt;</code></li>
-	<li><code>MulticastDelegateSafe&lt;&gt;</code></li>
-	<li><code>SinglecastDelegate&lt;&gt;</code></li>
-</ul>
+```cpp
+MulticastDelegate<>
+    MulticastDelegateSafe<>
+SinglecastDelegate<>
+```
 
 <p><code>MulticastDelegate&lt;&gt;</code> provides the function <code>operator()</code> to sequentially invoke each delegate within the list.</p>
 
