@@ -36,7 +36,7 @@ A C++ standards compliant delegate library capable of targeting any callable fun
     <li><strong>Lambda Support</strong> - bind and invoke lambda functions asynchronously using delegates.</li>
 	<li><strong>Automatic Heap Handling</strong> &ndash; automatically copy argument data to the heap for safe transport through a message queue</li>
 	<li><strong>Any OS</strong> &ndash; easy porting to any OS. C++11 <code>std::thread</code> port included</li>
-	<li><strong>Visual Studio and Eclipse</strong> - VC++ and GCC projects included</li>
+	<li><strong>CMake</strong> - CMake supports most toolchains including Windows and Linux.</li>
 	<li><strong>Unit Tests</strong> - extensive unit testing of the delegate library included</li>
 	<li><strong>No External Libraries</strong> &ndash; delegate does not rely upon external libraries</li>
 	<li><strong>Ease of Use</strong> &ndash; function signature template arguments (e.g., <code>MulticastDelegate&lt;void(TestStruct*)&gt;</code>)</li>
