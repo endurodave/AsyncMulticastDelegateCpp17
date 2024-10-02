@@ -44,6 +44,112 @@ A C++ standards compliant delegate library capable of targeting any callable fun
 
 <p>The delegate implementation significantly eases multithreaded application development by executing the delegate function with all of the function arguments on the thread of control that you specify. The framework handles all of the low-level machinery to safely invoke any function signature on a target thread. Windows 2017 and Eclipse projects are included for easy experimentation.</p>
 
+<h2>Quick Start</h2>
+
+A simple publish/subscribe asynchronous delegate example.
+
+<h3>Publisher</h3>
+
+Typically a delegate is inserted into a delegate container. <code>AlarmCd</code> is a delegate container. 
+
+<figure>
+    <img src="Figure1.jpg" alt="Figure 1" style="width:65%;">
+    <figcaption>Figure 1: AlarmCb Delegate Container</figcaption>
+</figure>
+
+<p></p>
+
+1. <code>MulticastDelegateSafe</code> - the delegate container type.
+2. <code>void(int, const string&)</code> - the function signature accepted by the delegate container. Any function matching can be inserted, such as a class member, static or lambda function.
+3. <code>AlarmCb</code> - the delegate container name. 
+
+<p>Invoke delegate container to notify subscribers.</p>
+
+```cpp
+MulticastDelegateSafe<void(int, const string&)> AlarmCb;
+
+void NotifyAlarmSubscribers(int alarmId, const string& note)
+{
+    // Invoke delegate to generate callback(s) to subscribers
+    AlarmCb(alarmId, note);
+}
+```
+<h3>Subscriber</h3>
+
+<p>Typically a subscriber registers with a delegate container instance to receive callbacks, either synchronously or asynchronously.</p>
+
+<figure>
+    <img src="Figure2.jpg" alt="Figure 2" style="width:75%;">
+    <figcaption>Figure 2: Insert into AlarmCb Delegate Container</figcaption>
+</figure>
+
+<p></p>
+
+1. <code>AlarmCb</code> - the publisher delegate container instance.
+2. <code>+=</code> - add a function target to the container. 
+3. <code>MakeDelegate</code> - creates a delegate instance.
+4. <code>&alarmSub</code> - the subscriber object pointer.
+5. <code>&AlarmSub::MemberAlarmCb</code> - the subscriber callback member function.
+6. <code>workerThread1</code> - the thread the callback will be invoked on. Adding a thread argument changes the callback type from synchronous to asynchronous.
+
+<p>Create a function conforming to the delegate signature. Insert a callable functions into the delegate container.</p>
+
+```cpp
+class AlarmSub
+{
+    void AlarmSub()
+    {
+        // Register to receive callbacks on workerThread1
+        AlarmCb += MakeDelegate(this, &AlarmSub::HandleAlarmCb, workerThread1);
+    }
+
+    void ~AlarmSub()
+    {
+        // Unregister from callbacks
+        AlarmCb -= MakeDelegate(this, &AlarmSub::HandleAlarmCb, workerThread1);
+    }
+
+    void HandleAlarmCb(int alarmId, const string& note)
+    {
+        // Handle callback here. Called on workerThread1 context.
+    }
+}
+```
+
+<p>This is a simple example. Many other usage patterns exist including asynchronous API's, blocking delegates with a timeout, and more.</p>
+
+<h2>Project Build</h2>
+
+<a href="https://www.cmake.org">CMake</a> is used to create the build files. CMake is free and open-source software. Windows, Linux and other toolchains are supported. Example CMake console commands executed inside the project root directory: 
+
+<h3>Windows Visual Studio</h3>
+
+<code>cmake -G "Visual Studio 17 2022" -A Win32 -B ../AsyncMulticastDelegateCpp17Build -S .</code>
+
+<code>cmake -G "Visual Studio 17 2022" -A x64 -B ../AsyncMulticastDelegateCpp17Build -S .</code>
+
+<code>cmake -G "Visual Studio 17 2022" -A x64 -B ../AsyncMulticastDelegateCpp17Build -S . -DENABLE_UNIT_TESTS=ON</code>
+
+After executed, open the Visual Studio project from within the <code>AsyncMulticastDelegateCpp17Build</code> directory.
+
+<figure>
+    <img src="Figure3.jpg" alt="Figure 3" style="width:100%;">
+    <figcaption>Figure 3: Visual Studio Build</figcaption>
+</figure>
+
+<h3>Linux Make</h3>
+
+<code>cmake -G "Unix Makefiles" -B ../AsyncMulticastDelegateCpp17Build -S .</code>
+
+<code>cmake -G "Unix Makefiles" -B ../AsyncMulticastDelegateCpp17Build -S . -DENABLE_UNIT_TESTS=ON</code>
+
+After executed, build the software from within the AsyncMulticastDelegateCpp17Build directory using the command <code>make</code>. Run the console app using <code>./DelegateApp</code>.
+
+<figure>
+    <img src="Figure4.jpg" alt="Figure 4" style="width:70%;">
+    <figcaption>Figure 4: Linux Makefile Build</figcaption>
+</figure>
+
 <h2>Delegates Background</h2>
 
 <p>If you&rsquo;re not familiar with a delegate, the concept is quite simple. A delegate can be thought of as a super function pointer. In C++, there&#39;s no pointer type capable of pointing to all the possible function variations: instance member, virtual, const, static, and free (global). A function pointer can&rsquo;t point to instance member functions, and pointers to member functions have all sorts of limitations. However, delegate classes can, in a type-safe way, point to any function provided the function signature matches. In short, a delegate points to any function with a matching signature to support anonymous function invocation.</p>
