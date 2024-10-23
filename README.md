@@ -1,6 +1,10 @@
 # Asynchronous Multicast Delegates in C++17
 A C++ standards compliant delegate library capable of targeting any callable function synchronously or asynchronously.
 
+<p>Related repositories:</p>
+
+* <a href="https://github.com/endurodave/IntegrationTestFramework">Integration Test Framework using Google Test and Delegates</a> - a multi-threaded C++ software integration test framework using Google Test and Delegate libraries.
+
 <h2>Preface</h2>
 
 <p>Asynchronous function invocation allows for easy movement of data between threads. The table below summarizes the various asynchronous function invocation implementations available in C and C++.</p>
